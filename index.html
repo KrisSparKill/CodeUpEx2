@@ -136,7 +136,14 @@
             </article>
         </section>
         <section class="correct">
-            <h2><span id="count"></span><br>Problems Correct</h2>
+            <h2>
+              <span id="count"></span>
+              <br>
+              Problems Correct
+            </h2>
+            <p id="counting_directions">
+              
+            </p>
             <ul></ul>
         </section>
     </main> 
@@ -147,6 +154,13 @@
 
   
 <script src="./101-exercises.js" type="text/javascript"></script>
-<script s
+<script>
+  
+    
+  if (document.getElementById("count").innerText == "") {
+    document.getElementById("counting_directions").innerText = 'As you progress, any JS syntax error will make this count "disappear". Identify and resolve any JS syntax errors.';
+  }
+  
+</script>
 </body>
 </html>
