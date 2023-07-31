@@ -946,8 +946,8 @@ addToDone("Exercise 59 is correct.")
 function sumAll(input){
   var sum = 0;
   input.forEach(function(element) {
-    sum +
-  })
+    sum += element;
+  }); return sum;
 }
 assert(sumAll([1, 2, 3, 4]), 10, "Exercise 60");
 assert(sumAll([3, 3, 3]), 9, "Exercise 60");
@@ -958,7 +958,12 @@ addToDone("Exercise 60 is correct.")
 
 //  Exercise 61
 //  Write a function definition named mean that takes in sequence of numbers and returns the average value
-
+function mean(input){
+  var sum = 0;
+  input.forEach(function(element) {
+    sum += element;
+  }); return(sum/input.length);
+}
 assert(mean([1, 2, 3, 4]), 2.5, "Exercise 61");
 assert(mean([3, 3, 3]), 3, "Exercise 61");
 assert(mean([1, 5, 6]), 4, "Exercise 61");
@@ -968,7 +973,15 @@ addToDone("Exercise 61 is correct.")
 
 // Exercise 62
 // Write a function definition named median that takes in sequence of numbers and returns the average value
-
+function median(input){
+  input.sort(function(a,b){
+             return a-b;
+             });
+var half = Math.floor(input.length / 2);
+if (input.length % 2)
+  return input[half];
+return (input[half - 1] + input[half]) / 2.0;
+}
 assert(median([1, 2, 3, 4, 5]), 3.0, "Exercise 62");
 assert(median([1, 2, 3]), 2.0, "Exercise 62");
 assert(median([1, 5, 6]), 5.0, "Exercise 62");
@@ -978,7 +991,12 @@ addToDone("Exercise 62 is correct.")
 
 // Exercise 63
 // Write a function definition named maxMinusMin that takes in an array of numbers and returns the difference of the maximum minus theminimum.
-
+function maxMinusMin(input){
+  input.sort(function(a,b){
+    return a-b;
+  });
+  return (input[input.length-1]) - (input[0]);
+}
 
 assert(maxMinusMin([1, 2, 2, 8, 3, 4]), 7, "Exercise 63");
 assert(maxMinusMin([1, 1, 2, 3, 9]), 8, "Exercise 63");
@@ -988,7 +1006,12 @@ addToDone("Exercise 63 is correct.")
 
 // Exercise 64
 // Write a function definition named productOfAll that takes in sequence of numbers and returns the product of multiplying all the numbers together
-
+function productOfAll(input){
+  var product = 1;
+  input.forEach(function(element) {
+    product *= element;
+  }); return(product);
+}
 assert(productOfAll([1, 2, 3]), 6, "Exercise 64");
 assert(productOfAll([3, 4, 5]), 60, "Exercise 64");
 assert(productOfAll([2, 2, 3, 0]), 0, "Exercise 64");
