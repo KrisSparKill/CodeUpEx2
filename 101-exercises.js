@@ -1182,7 +1182,7 @@ addToDone("Exercise 76 is correct.")
 // Exercise 77
 // Write a function definition named onlyPositiveEvens that takes in sequence of numbers and returns an array containing all the positive evens from the sequence
 function onlyPositiveEvens(input){
-  var posEven = input.fiter(element => element % 2 === 0 && element > 0);
+  var posEven = input.filter(element => element % 2 === 0 && element > 0);
   return posEven;
 }
 assert(onlyPositiveEvens([1, -2, 3]), [], "Exercise 77");
@@ -1195,7 +1195,7 @@ addToDone("Exercise 77 is correct.")
 // Exercise 78
 // Write a function definition named onlyPositiveOdds that takes in sequence of numbers and returns an array containing all the positive odd numbers from the sequence
 function onlyPositiveOdds(input){
-  var posOdd = input.filter(element => element % 2 !== 0 && element < 0);
+  var posOdd = input.filter(element => element % 2 !== 0 && element > 0);
   return posOdd;
 }
 assert(onlyPositiveOdds([1, -2, 3]), [1, 3], "Exercise 78");
@@ -1426,8 +1426,8 @@ addToDone("Exercise 92 is complete.")
 function getAverageBookPrice(obj){
   var sum = 0;
   for (var i = 0; i < obj.length; i++){
-    sum 
-  }
+    sum += obj[i].price;
+  } return sum/obj.length;
 }
 assert(getAverageBookPrice(books), 30.725, "Exercise 93");
 addToDone("Exercise 93 is complete.")
@@ -1436,7 +1436,14 @@ addToDone("Exercise 93 is complete.")
 // Exercise 94
 // Write a function called highestPriceBook that takes in the above defined array of objects "books" and returns the object containing the title, price, and author of the book with the highest priced book.
 // Hint: Much like sometimes start functions with a variable set to zero, you may want to create a object with the price set to zero to compare to each object's price in the array
+function highestPriceBook(obj){
+            var high = {price: 0};
+            for(var x = 0; x < obj.length; x++){
+                if(obj[x].price > high.price){
+                    high.price = obj[x].price;
+                }
 
+        }
 assert(highestPriceBook(books), {
     "title": "The Visual Display of Quantitative Information",
     "price": 38.00,
@@ -1450,7 +1457,14 @@ addToDone("Exercise 94 is complete")
 // Exercise 95
 // Write a function called lowestPriceBook that takes in the above defined array of objects "books" and returns the object containing the title, price, and author of the book with the lowest priced book.
 // Hint: Much like sometimes start functions with a variable set to zero or float('inf'), you may want to create a object with the price set to float('inf') to compare to each object in the array
-
+function lowestPriceBook(obj){
+  var low = {price: 0};
+  for (var x = 0; x > obj.length; x++){
+    if (obj[x].price < low.price){
+      low.price = obj[x].price;
+    }
+  }
+}
 
 assert(lowestPriceBook(books), {
     "title": "Weapons of Math Destruction",
