@@ -1258,7 +1258,8 @@ addToDone("Exercise 82 is correct.")
 // Exercise 83
 // Write a function definition named getUniqueValues that takes in an array and returns an with only the unique values from that array.
 function getUniqueValues(ary){
-  
+  var uniqueAry = ary.filter((item, index) => ary.indexOf(item) === index);
+  return uniqueAry;
 }
 assert(getUniqueValues(["ant", "ant", "mosquito", "mosquito", "ladybug"]), ["ant", "mosquito", "ladybug"], "Exercise 83");
 assert(getUniqueValues(["b", "a", "n", "a", "n", "a", "s"]), ["b", "a", "n", "s"], "Exercise 83");
@@ -1268,7 +1269,10 @@ addToDone("Exercise 83 is correct.")
 
 // Exercise 84
 // Write a function definition named elementsTimesTwo that takes in an array of numbers and returns an array with each value multiplied by 2.
-
+function elementsTimesTwo(ary){
+  var double = ary.map(x => x * 2);
+  return double;
+}
 
 assert(elementsTimesTwo([1, 2, 3]), [2, 4, 6], "Exercise 84")
 assert(elementsTimesTwo([0, 0, 0]), [0, 0, 0], "Exercise 84")
@@ -1278,7 +1282,10 @@ addToDone("Exercise 84 is correct.")
 
 // Exercise 85
 // Write a function named flatten that takes in an array of arrays. Return the flattened array.
-
+function flatten(ary){
+  var flat = ary.reduce((a,b) => a.concat(b));
+  return flat;
+}
 
 assert(flatten([[1, 2], [3, 4], [5, 6]]), [1, 2, 3, 4, 5, 6], "Exercise 85");
 assert(flatten([[1, 2, 3], [1, 2, 3], [1, 2, 3]]), [1, 2, 3, 1, 2, 3, 1, 2, 3], "Exercise 85");
@@ -1289,7 +1296,10 @@ addToDone("Exercise 85 is correct.")
 
 // Exercise 86
 // Write a function definition named addOneToArray that adds one to every number in an array
-
+function addOneToArray(ary){
+  var one = ary.map(x => x+1);
+  return one;
+}
 assert(addOneToArray([1, 2, 3]), [2, 3, 4], "Exercise 86");
 assert(addOneToArray([4, 4, 4]), [5, 5, 5], "Exercise 86");
 assert(addOneToArray([9, 10, 11]), [10, 11, 12], "Exercise 86");
@@ -1316,7 +1326,10 @@ const thomasPaper = {
 
 // Exercise 87
 // Write a function named getPaperTitle that takes in a object and returns the title property
-
+function getPaperTitle(obj){
+  var titleProp = obj.title;
+  return titleProp;
+}
 assert(getPaperTitle(tukeyPaper), "The Future of Data Analysis", "Exercise 87");
 assert(getPaperTitle(thomasPaper), "A mathematical model of glutathione metabolism", "Exercise 87");
 addToDone("Exercise 87 is correct.")
@@ -1324,7 +1337,9 @@ addToDone("Exercise 87 is correct.")
 
 // Exercise 88
 // Write a function named getYearPublished that takes in an objects and returns the value behind the "year_published" key.
-
+function getYearPublished(obj){
+  return obj.year_published;
+}
 assert(getYearPublished(tukeyPaper), 1962, "Exercise 88");
 assert(getYearPublished(thomasPaper), 2008, "Exercise 88");
 addToDone("Exercise 88 is correct.")
@@ -1339,7 +1354,9 @@ const book = {
 
 // Exercise 89
 // Write a function named getPrice that takes in a object and returns the price
-
+function getPrice(obj){
+  return obj.price;
+}
 assert(getPrice(book), 36.99, "Exercise 89");
 addToDone("Exercise 89 is complete.")
 
@@ -1347,7 +1364,9 @@ addToDone("Exercise 89 is complete.")
 
 // Exercise 90
 // Write a function named getBookAuthor that takes in a object (the above declared book variable) and returns the author's name
-
+function getBookAuthor(obj){
+  return obj.author;
+}
 
 assert(getBookAuthor(book), "Frances Buontempo", "Exercise 90");
 addToDone("Exercise 90 is complete.")
@@ -1382,7 +1401,9 @@ const books = [
 
 // Exercise 91
 // Write a function named getNumberOfBooks that takes in a array of objects and returns the number of objects in that array.
-
+function getNumberOfBooks(aryObj){
+  return aryObj.length;
+}
 assert(getNumberOfBooks(books), 4, "Exercise 91");
 addToDone("Exercise 91 is complete.")
 
@@ -1390,14 +1411,24 @@ addToDone("Exercise 91 is complete.")
 
 // Exercise 92
 // Write a function named totalOfBookPrices that takes in a array of objects and returns the sum total of all the book prices added together
-
+function totalOfBookPrices(obj){
+  var sum = 0;
+  for (var i = 0; i < obj.length; i ++){
+    sum += obj[i].price;
+  } return sum;
+}
 assert(totalOfBookPrices(books), 122.9, "Exercise 92")
 addToDone("Exercise 92 is complete.")
 
 
 // Exercise 93
 // Write a function named getAverageBookPrice that takes in a array of objects and returns the average book price.
-
+function getAverageBookPrice(obj){
+  var sum = 0;
+  for (var i = 0; i < obj.length; i++){
+    sum 
+  }
+}
 assert(getAverageBookPrice(books), 30.725, "Exercise 93");
 addToDone("Exercise 93 is complete.")
 
