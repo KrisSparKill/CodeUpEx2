@@ -1468,7 +1468,7 @@ addToDone("Exercise 94 is complete")
 // Write a function called lowestPriceBook that takes in the above defined array of objects "books" and returns the object containing the title, price, and author of the book with the lowest priced book.
 // Hint: Much like sometimes start functions with a variable set to zero or float('inf'), you may want to create a object with the price set to float('inf') to compare to each object in the array
 function lowestPriceBook(books) {
-    let lowestPrice = 0;
+    let lowestPrice = Infinity;
     let lowestPriceBookObj = null;
 
     for (const book of books) {
@@ -1581,15 +1581,17 @@ addToDone("Exercise 98 is complete.")
 function getAverageItemPrice(shoppingCart) {
     let totalPrices = 0;
   for (const item of shoppingCart.items) {
-    totalPrices += item.price * item.quantity;
+    totalPrices += item.price;
     }
-  const totalItems = shoppingCart.items.reduce((acc, item) => acc + item.quantity, 0);
+  const totalItems = shoppingCart.items.length;
     const averagePrice = totalPrices / totalItems;
-  return totalItems === 0 ? 0 : averagePrice;
+
+    return averagePrice;
 }
 
 const averagePrice = getAverageItemPrice(shoppingCart);
 console.log(averagePrice);
+
 assert(getAverageItemPrice(shoppingCart), 2.1420000000000003, "Exercise 99");
 addToDone("Exercise 99 is complete.")
 
@@ -1598,6 +1600,19 @@ addToDone("Exercise 99 is complete.")
 // Exercise 100
 // Write a function named getAverageSpentPerItem that takes in the shopping cart and returns the average of summing each item's quanties times that item's price.
 // Hint: You may need to set an initial total price and total total quantity to zero, then sum up and divide that total price by the total quantity
+function getAverageSpentPerItem(shoppingCart) {
+    let totalSpent = 0;
+  for (const item of shoppingCart.items) {
+    totalSpent += item.price * item.quantity;
+    }
+  const totalItems = shoppingCart.items.reduce((acc, item) => acc + item.quantity, 0);
+    const averageSpentPerItem = totalSpent / totalItems;
+  return totalItems === 0 ? 0 : averageSpentPerItem;
+}
+
+const averageSpentPerItem = getAverageSpentPerItem(shoppingCart);
+console.log(averageSpentPerItem); // Output: 1.3511764705882353
+
 
 assert(getAverageSpentPerItem(shoppingCart), 1.333529411764706, "Exercise 100");
 addToDone("Exercise 100 is complete.")
@@ -1608,7 +1623,23 @@ addToDone("Exercise 100 is complete.")
 // Be sure to do this as programmatically as possible. 
 // Hint: Similarly to how we sometimes begin a function with setting a variable to zero, we need a starting place:
 // Hint: Consider creating a variable that is a object with the keys "price" and "quantity" both set to 0. You can then compare each item's price and quantity total to the one from "most"
+function mostSpentOnItem(shoppingCart) {
+    let maxSpent = 0;
+    let mostSpentItem = null;
 
+    for (const item of shoppingCart.items) {
+        const spentOnItem = item.price * item.quantity;
+        if (spentOnItem > maxSpent) {
+            maxSpent = spentOnItem;
+            mostSpentItem = item;
+        }
+    }
+
+    return mostSpentItem;
+}
+
+const mostSpentItem = mostSpentOnItem(shoppingCart);
+console.log(mostSpentItem);
 assert(mostSpentOnItem(shoppingCart), {
     "title": "chocolate",
     "price": 0.75,
