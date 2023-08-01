@@ -1437,8 +1437,21 @@ addToDone("Exercise 93 is complete.")
 // Write a function called highestPriceBook that takes in the above defined array of objects "books" and returns the object containing the title, price, and author of the book with the highest priced book.
 // Hint: Much like sometimes start functions with a variable set to zero, you may want to create a object with the price set to zero to compare to each object's price in the array
 function highestPriceBook(books) {
-return books.sort((a, b) => b.price - a.price);
+    let highestPrice = 0;
+    let highestPriceBookObj = null;
+
+    for (const book of books) {
+        if (book.price && book.price > highestPrice) {
+            highestPrice = book.price;
+            highestPriceBookObj = book;
+        }
+    }
+
+    return highestPriceBookObj;
 }
+
+const highestPricedBook = highestPriceBook(books);
+console.log(highestPricedBook);
 
 highestPriceBook(books)[0];
 assert(highestPriceBook(books), {
@@ -1454,13 +1467,22 @@ addToDone("Exercise 94 is complete")
 // Exercise 95
 // Write a function called lowestPriceBook that takes in the above defined array of objects "books" and returns the object containing the title, price, and author of the book with the lowest priced book.
 // Hint: Much like sometimes start functions with a variable set to zero or float('inf'), you may want to create a object with the price set to float('inf') to compare to each object in the array
-function lowestPriceBook(obj){
-  var low = {price: 0};
-  for (var x = 0; x > obj.length; x++){
-    if (obj[x].price < low.price){
-      low.price = obj[x].price;
+function lowestPriceBook(books) {
+    let lowestPrice = 0;
+    let lowestPriceBookObj = null;
+
+    for (const book of books) {
+        if (book.price && book.price < lowestPrice) {
+            lowestPrice = book.price;
+            lowestPriceBookObj = book;
+        }
     }
+
+    return lowestPriceBookObj;
 }
+
+const lowestPricedBook = lowestPriceBook(books);
+console.log(lowestPricedBook);
 
 assert(lowestPriceBook(books), {
     "title": "Weapons of Math Destruction",
@@ -1505,6 +1527,12 @@ const shoppingCart = {
 // Exercise 96
 // Write a function named getTaxRate that takes in the above shopping cart as input and returns the tax rate.
 // Hint: How do you access a key's value on a object? The tax rate is one key of the entire shoppingCart object.
+function getTaxRate(shoppingCart) {
+    return shoppingCart.tax;
+}
+
+const taxRate = getTaxRate(shoppingCart);
+console.log(taxRate);
 
 assert(getTaxRate(shoppingCart), .08, "Exercise 96");
 addToDone("Exercise 96 is complete")
@@ -1514,7 +1542,16 @@ addToDone("Exercise 96 is complete")
 // Exercise 97
 // Write a function named numberOfItemTypes that takes in the shopping cart as input and returns the number of unique item types in the shopping cart. 
 // We're not yet using the quantity of each item, but rather focusing on determining how many different types of items are in the cart.
+function numberOfItemTypes(shoppingCart) {
+        const uniqueItems = new Set();
+    for (const item of shoppingCart.items) {
+        uniqueItems.add(item.title);
+    }
+    return uniqueItems.size;
+}
 
+const numOfItemTypes = numberOfItemTypes(shoppingCart);
+console.log(numOfItemTypes);
 assert(numberOfItemTypes(shoppingCart), 5, "Exercise 97");
 addToDone("Exercise 97 is complete.")
 
@@ -1523,7 +1560,16 @@ addToDone("Exercise 97 is complete.")
 // Exercise 98
 // Write a function named totalNumberOfItems that takes in the shopping cart as input and returns the total number all item quantities.
 // This should return the sum of all of the quantities from each item type
+function totalNumberOfItems(shoppingCart) {
+    let totalItems = 0;
+  for (const item of shoppingCart.items) {
+    totalItems += item.quantity;
+    }
 
+    return totalItems;
+}
+const totalItemsCount = totalNumberOfItems(shoppingCart);
+console.log(totalItemsCount);
 assert(totalNumberOfItems(shoppingCart), 17, "Exercise 98");
 addToDone("Exercise 98 is complete.")
 
@@ -1532,7 +1578,18 @@ addToDone("Exercise 98 is complete.")
 // Exercise 99
 // Write a function named getAverageItemPrice that takes in the shopping cart as an input and returns the average of all the item prices.
 // Hint - This should determine the total price divided by the number of types of items. This does not account for each item type's quantity.\
+function getAverageItemPrice(shoppingCart) {
+    let totalPrices = 0;
+  for (const item of shoppingCart.items) {
+    totalPrices += item.price * item.quantity;
+    }
+  const totalItems = shoppingCart.items.reduce((acc, item) => acc + item.quantity, 0);
+    const averagePrice = totalPrices / totalItems;
+  return totalItems === 0 ? 0 : averagePrice;
+}
 
+const averagePrice = getAverageItemPrice(shoppingCart);
+console.log(averagePrice);
 assert(getAverageItemPrice(shoppingCart), 2.1420000000000003, "Exercise 99");
 addToDone("Exercise 99 is complete.")
 
